@@ -4,7 +4,7 @@
 - Ryan Lee
 
 ## Project Video
-[Link to Project Video](https://example.com/your-video-link)
+[Link to Project Video](https://youtu.be/eS0yTFPWxMY)
 
 ## Project Description
 Gourmet Recipe Finder is a web application that allows users to search for and discover gourmet recipes. It features a responsive design, theme toggling, and a blog section.
