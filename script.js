@@ -63,7 +63,7 @@ function login() {
     const user = users.find(u => u.username === username && u.password === password);
 
     if (user) {
-        currentUser = { username: user.username }; // Store only non-sensitive data
+        currentUser = { username: user.username }; 
         localStorage.setItem('currentUser', JSON.stringify(currentUser));
         hideLoginModal();
         updateLoginStatus();
@@ -184,7 +184,6 @@ document.addEventListener('DOMContentLoaded', function() {
         loginButton.addEventListener('click', login);
     }
 
-    // Create and add login toggle button only if themeToggle exists
     if (themeToggle) {
         const loginToggle = document.createElement('button');
         loginToggle.id = 'loginToggle';
@@ -208,13 +207,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (blogTab) blogTab.classList.add("active");
     }
 
-    // Only display recipes if the recipeList element exists
     const recipeList = document.getElementById('recipeList');
     if (recipeList) {
         displayRecipes(recipes);
     }
 
-    // Close the modal if clicking outside of it
     window.onclick = function(event) {
         const modal = document.getElementById('loginModal');
         if (modal && event.target == modal) {
