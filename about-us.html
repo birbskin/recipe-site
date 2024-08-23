@@ -36,9 +36,10 @@
     </div>
     <div class="container mx-auto px-4 py-8">
         <div class="flex justify-end mb-4">
-            <button id="themeToggle" class="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700">Toggle Theme</button>
+          <button id="themeToggle" class="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg">
+            Toggle Theme
+          </button>
         </div>
-        
         <h1 id="gourmet-recipe-finder" class="text-5xl font-bold text-center mb-8 text-gray-800 dark:text-gray-100 animate__animated animate__fadeIn">
             Gourmet Recipe Finder
         </h1>
@@ -46,33 +47,41 @@
             <ul class="tab-bar">
                 <li><a href="untitled.html" id="homeTab">Home</a></li>
                 <li><a href="about-us.html" id="aboutTab">About Us</a></li>
-                <li><a href="blog.html" id="blogTab">Blog</a></li>
+                <li><a href="blog.html" id="blogTab" class="active">Blog</a></li>
             </ul>
         </nav>
-        <div class="flex flex-col mb-8 justify-center">
-            <input type="text" id="searchInput" placeholder="Search recipes..." class="w-full px-4 py-2 rounded-lg mb-2">
-            <div class="flex flex-wrap justify-center">
-                <select id="dietFilter" class="m-1 p-2 rounded">
-                    <option value="">Any Diet</option>
-                    <option value="vegetarian">Vegetarian</option>
-                    <option value="vegan">Vegan</option>
-                    <option value="gluten-free">Gluten-free</option>
-                </select>
-                <select id="cuisineFilter" class="m-1 p-2 rounded">
-                    <option value="">Any Cuisine</option>
-                    <option value="italian">Italian</option>
-                    <option value="mexican">Mexican</option>
-                    <option value="indian">Indian</option>
-                    <option value="greek">Greek</option>
-                    <option value="chinese">Chinese</option>
-                </select>
-                <input type="number" id="maxTime" placeholder="Max cooking time (mins)" class="m-1 p-2 rounded">
-            </div>
-            <button id="searchButton" class="primary-bg text-white px-4 py-2 rounded-lg mt-2">Search</button>
+        <div class="container mx-auto px-4 py-8">
+            <h1 class="text-4xl font-bold text-center mb-8">About Us</h1>
+            
+            <section class="mb-8">
+                <h2 class="text-3xl font-semibold mb-4">Our Story</h2>
+                <p>Originally stemming from childhood memories of using cooking websites to make dinners with my mom, I've created this sample webite to show off what I've learned this summer in CS 396: Intro to Web Development. Feel free to take a look around!</p>
+            </section>
+            
+            <section class="mb-8">
+                <h2 class="text-3xl font-semibold mb-4">Our Mission</h2>
+                <p>Our mission is to provide the best quality recipes and culinary inspiration to food lovers everywhere.</p>
+            </section>
+            
+            <section class="mb-8">
+                <h2 class="text-3xl font-semibold mb-4">Meet the Team</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="team-member">
+                        <img src="ryan-lee.jpg" alt="Team Member" class="rounded-full mb-4">
+                        <h3 class="text-xl font-bold">Ryan Lee</h3>
+                        <p class="text-gray-700">CEO</p>
+                </div>
+            </section>
+            
+            <section class="mb-8">
+                <h2 class="text-3xl font-semibold mb-4">Customer Testimonials</h2>
+                <p>"This is the best recipe site I've ever used!" - You, probably</p>
+            </section>     
+            <section class="mb-8">
+                <h2 class="text-3xl font-semibold mb-4">Contact Us</h2>
+                <p>If you have any questions or want to get in touch, feel free to contact us at <a href="mailto:ryanlee2024@u.northwestern.edu?subject=Inquiry"style="color: #EF7510">ryanlee2024@u.northwestern.edu</a>.</p>
+            </section>
         </div>
-        <div id="recipeList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        </div>
-    </div>
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gourmet Recipe Finder</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        h1 {
+            font-family: 'Merriweather', serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900">
+    <div class="h-12"></div>
+    <div id="loginModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white dark:bg-gray-800">
+            <div class="mt-3 text-center">
+                <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-gray-100">Login</h3>
+                <div class="mt-2 px-7 py-3">
+                    <input type="text" id="username" placeholder="Username" class="mb-3 px-3 py-2 border rounded-md w-full dark:bg-gray-700 dark:text-white">
+                    <input type="password" id="password" placeholder="Password" class="mb-3 px-3 py-2 border rounded-md w-full dark:bg-gray-700 dark:text-white">
+                    <button id="loginButton" class="px-4 py-2 bg-blue-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                        Login
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex justify-end mb-4">
+          <button id="themeToggle" class="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg">
+            Toggle Theme
+          </button>
+        </div>
+        <h1 id="gourmet-recipe-finder" class="text-5xl font-bold text-center mb-8 text-gray-800 dark:text-gray-100 animate__animated animate__fadeIn">
+            Gourmet Recipe Finder
+        </h1>
+        <nav>
+            <ul class="tab-bar">
+                <li><a href="untitled.html" id="homeTab">Home</a></li>
+                <li><a href="about-us.html" id="aboutTab">About Us</a></li>
+                <li><a href="blog.html" id="blogTab" class="active">Blog</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
+        <h1 class="text-4xl font-bold text-center mb-8 text-gray-800 dark:text-gray-100">Our Blog</h1>
+        <div class="grid">
+            <!-- Blog Post 1 -->
+            <article class="blog-post">
+                <div class="blog-image" style="background-image: url('blog-post-1.jpg')"></div>
+                <div class="content">
+                    <h2 class="text-2xl font-bold mb-2 text-gray-800 dark:text-gray-100">Seasonal Cooking: Spring Edition</h2>
+                    <p>Discover the best ingredients and recipes for spring, featuring fresh produce and light, refreshing flavors.</p>
+                    <a href="#">Read More →</a>
+                </div>
+            </article>
+
+            <!-- Blog Post 2 -->
+            <article class="blog-post">
+                <div class="blog-image" style="background-image: url('blog-post-2.jpg')"></div>
+                <div class="content">
+                    <h2 class="text-2xl font-bold mb-2 text-gray-800 dark:text-gray-100">5 Must-Have Kitchen Gadgets for 2024</h2>
+                    <p>Explore the latest kitchen innovations that will revolutionize your cooking experience and save you time.</p>
+                    <a href="#" class="text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300">Read More →</a>
+                </div>
+            </article>
+
+            <!-- Blog Post 3 -->
+            <article class="blog-post">
+                <div class="blog-image" style="background-image: url('blog-post-3.jpg')"></div>
+                <div class="content">
+                    <h2 class="text-2xl font-bold mb-2 text-gray-800 dark:text-gray-100">Decadent Vegan Desserts You Won't Believe</h2>
+                    <p>Indulge in these mouthwatering vegan dessert recipes that are sure to satisfy your sweet tooth.</p>
+                    <a href="#" class="text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300">Read More →</a>
+                </div>
+            </article>
+
+            <!-- Blog Post 4 -->
+            <article class="blog-post">
+                <div class="blog-image" style="background-image: url('blog-post-4.jpg')"></div>
+                <div class="content">
+                    <h2 class="text-2xl font-bold mb-2 text-gray-800 dark:text-gray-100">Mastering the Art of Sous Vide Cooking</h2>
+                    <p>Learn the secrets of sous vide cooking and elevate your culinary skills with this precise and flavorful technique.</p>
+                    <a href="#" class="text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300">Read More →</a>
+                </div>
+            </article>
+        </div>
+        <div class="pagination">
+            <a href="#">Previous</a>
+            <a href="#" class="active">1</a>
+            <a href="#">Next</a>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -46,7 +46,7 @@ const users = [
     {username: "user2", password: "password2"}
 ];
 
-let currentUser = null;
+let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
 
 function showLoginModal() {
     document.getElementById('loginModal').classList.remove('hidden');
@@ -63,7 +63,8 @@ function login() {
     const user = users.find(u => u.username === username && u.password === password);
 
     if (user) {
-        currentUser = user;
+        currentUser = { username: user.username }; // Store only non-sensitive data
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
         hideLoginModal();
         updateLoginStatus();
     } else {
@@ -73,6 +74,7 @@ function login() {
 
 function logout() {
     currentUser = null;
+    localStorage.removeItem('currentUser');
     updateLoginStatus();
 }
 
@@ -86,6 +88,7 @@ function updateLoginStatus() {
         loginToggle.onclick = showLoginModal;
     }
 }
+
 
 function setTheme(isDark) {
     if (isDark) {
@@ -151,26 +154,11 @@ function displayRecipes(recipes) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.getElementById('searchInput');
-    const searchButton = document.getElementById('searchButton');
     const themeToggle = document.getElementById('themeToggle');
-    const loginButton = document.getElementById('loginButton');
-
-    // Create and add login toggle button
-    const loginToggle = document.createElement('button');
-    loginToggle.id = 'loginToggle';
-    loginToggle.classList.add('px-4', 'py-2', 'rounded-lg', 'bg-blue-500', 'text-white', 'ml-2');
-    loginToggle.textContent = 'Login';
-    themeToggle.parentNode.insertBefore(loginToggle, themeToggle.nextSibling);
-
-    searchButton.addEventListener('click', advancedSearch);
-    searchInput.addEventListener('keyup', function(event) {
-        if (event.key === 'Enter') {
-            advancedSearch();
-        }
-    });
-
-    themeToggle.addEventListener('click', toggleTheme);
+    
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
 
     // Set initial theme
     const savedDarkMode = localStorage.getItem('darkMode');
@@ -178,17 +166,58 @@ document.addEventListener('DOMContentLoaded', function() {
         setTheme(true);
     }
 
-    // Initial display of all recipes
-    displayRecipes(recipes);
+    // Only run these functions if the elements exist
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+    const loginButton = document.getElementById('loginButton');
 
-    // Connect login button to showLoginModal function
-    loginToggle.addEventListener('click', showLoginModal);
-    loginButton.addEventListener('click', login);
+    if (searchInput && searchButton) {
+        searchButton.addEventListener('click', advancedSearch);
+        searchInput.addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                advancedSearch();
+            }
+        });
+    }
+
+    if (loginButton) {
+        loginButton.addEventListener('click', login);
+    }
+
+    // Create and add login toggle button only if themeToggle exists
+    if (themeToggle) {
+        const loginToggle = document.createElement('button');
+        loginToggle.id = 'loginToggle';
+        loginToggle.classList.add('px-4', 'py-2', 'rounded-lg', 'bg-blue-500', 'text-white', 'ml-2');
+        loginToggle.textContent = 'Login';
+        themeToggle.parentNode.insertBefore(loginToggle, themeToggle.nextSibling);
+
+        loginToggle.addEventListener('click', showLoginModal);
+    }
+
+    const currentPath = window.location.pathname;
+
+    if (currentPath.includes("untitled.html")) {
+        const homeTab = document.getElementById("homeTab");
+        if (homeTab) homeTab.classList.add("active");
+    } else if (currentPath.includes("about-us.html")) {
+        const aboutTab = document.getElementById("aboutTab");
+        if (aboutTab) aboutTab.classList.add("active");
+    } else if (currentPath.includes("blog.html")) {
+        const blogTab = document.getElementById("blogTab");
+        if (blogTab) blogTab.classList.add("active");
+    }
+
+    // Only display recipes if the recipeList element exists
+    const recipeList = document.getElementById('recipeList');
+    if (recipeList) {
+        displayRecipes(recipes);
+    }
 
     // Close the modal if clicking outside of it
     window.onclick = function(event) {
         const modal = document.getElementById('loginModal');
-        if (event.target == modal) {
+        if (modal && event.target == modal) {
             hideLoginModal();
         }
     }
